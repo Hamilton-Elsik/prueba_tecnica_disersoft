@@ -1,0 +1,65 @@
+<h3 class="my-3">{{action}} mantenimiento preventivo</h3>
+<form [formGroup]="maintForm" (ngSubmit)="addOrEdit()">
+
+    <div class="mb-3">
+        <label for="num_ticket" class="form-label">No. del Ticket</label>
+        <input formControlName="num_ticket" type="number" class="form-control" id="num_ticket" min="1"
+            autocomplete="off">
+        <span *ngIf="maintForm.get('num_ticket')?.invalid && maintForm.get('num_ticket')?.touched" class="text-danger">
+            El <strong>No. del Ticket</strong> es requerido
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="num_bus" class="form-label">No. del Bus</label>
+        <input formControlName="num_bus" type="text" class="form-control" id="num_bus" maxlength="6" autocomplete="off">
+        <span *ngIf="maintForm.get('num_bus')?.invalid && maintForm.get('num_bus')?.touched" class="text-danger">
+            El <strong>No. del Bus</strong> es requerido
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="kilometers" class="form-label">Kilometraje</label>
+        <input formControlName="kilometers" type="number" class="form-control" id="kilometers" min="0" step="any"
+            autocomplete="off">
+        <span *ngIf="maintForm.get('kilometers')?.invalid && maintForm.get('kilometers')?.touched" class="text-danger">
+            El <strong>kilometraje</strong> es requerido
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="name_tec" class="form-label">Nombre del técnico</label>
+        <input formControlName="name_tec" type="text" class="form-control" id="name_tec" autocomplete="off">
+        <span *ngIf="maintForm.get('name_tec')?.invalid && maintForm.get('name_tec')?.touched" class="text-danger">
+            El <strong>nombre del técnico</strong> es requerido
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="start_date" class="form-label">Fecha de inicio</label>
+        <input formControlName="start_date" type="datetime-local" class="form-control" id="start_date">
+        <span *ngIf="maintForm.get('start_date')?.invalid && maintForm.get('start_date')?.touched" class="text-danger">
+            La <strong>fecha de inicio</strong> es requerida
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="end_date" class="form-label">Fecha de finalización</label>
+        <input formControlName="end_date" type="datetime-local" class="form-control" id="end_date">
+        <span *ngIf="maintForm.get('end_date')?.invalid && maintForm.get('end_date')?.touched" class="text-danger">
+            La <strong>fecha de finalización</strong> es requerida
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="comment" class="form-label">Observaciones</label>
+        <textarea formControlName="comment" class="form-control" id="comment" rows="8"></textarea>
+        <span *ngIf="maintForm.get('comment')?.invalid && maintForm.get('comment')?.touched" class="text-danger">
+            Las <strong>observaciones</strong> son requeridas
+        </span>
+    </div>
+
+    <button type="submit" [disabled]="maintForm.invalid" class="btn btn-primary float-end">Guardar</button>
+
+    <button type="button" class="btn btn-secondary" routerLink="/">Volver</button>
+</form>
