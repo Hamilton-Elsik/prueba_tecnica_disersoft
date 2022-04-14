@@ -1,0 +1,17 @@
+<div class="my-5">
+    <h3>Bus No. {{maintenance?.num_bus}}</h3>
+    <h4>Ticket No. {{maintenance?.num_ticket}}</h4>
+</div>
+
+<ul class="my-4">
+    <li><b>Id:</b> {{maintenance?.id}}</li>
+    <li><b>Kilometraje:</b> {{maintenance?.kilometers}}</li>
+    <li><b>Nombre del técnico:</b> {{maintenance?.name_tec}}</li>
+    <li><b>Fecha de inicio:</b> {{maintenance?.startDate | date: 'dd/MM/yyyy hh:mm:ss'}}</li>
+    <li><b>Fecha de finalización:</b> {{maintenance?.endDate | date: 'dd/MM/yyyy hh:mm:ss'}}</li>
+</ul>
+
+<div class="p-3">
+    <h5>Observaciones:</h5>
+    <p>{{maintenance?.comment}}</p>
+</div>

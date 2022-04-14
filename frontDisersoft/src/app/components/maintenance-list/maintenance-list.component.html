@@ -1,0 +1,54 @@
+<div class="row mt-3">
+  <div class="col-lg-6">
+    <h3>Mantenimientos Preventivos</h3>
+  </div>
+  <div class="col-lg-6">
+    <button class="btn btn-primary float-end" routerLink="/add">
+      Nuevo Preventivo
+    </button>
+  </div>
+</div>
+
+<table *ngIf="listMaintenances.length > 0" class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>No.Ticket</td>
+      <td>No. Bus</td>
+      <td>Kilometraje</td>
+      <td>Nombre del técnico</td>
+      <td>Hora de Inicio</td>
+      <td>Hora de Fin</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let maint of listMaintenances">
+      <td>{{ maint.id }}</td>
+      <td>
+        <a [routerLink]="['/view', maint.id]">
+          {{ maint.num_ticket }}
+        </a>
+      </td>
+      <td>
+        <a [routerLink]="['/view', maint.id]">
+          {{ maint.num_bus }}
+        </a>
+      </td>
+      <td>{{ maint.kilometers }}</td>
+      <td>{{ maint.name_tec }}</td>
+      <td>{{ maint.startDate | date: "dd/MM/yyyy hh:mm:ss" }}</td>
+      <td>{{ maint.endDate | date: "dd/MM/yyyy hh:mm:ss" }}</td>
+      <td>
+        <button [routerLink]="['/edit', maint.id]" class="btn btn-primary btn-sm float-end">Editar</button>
+      </td>
+      <td>
+        <button (click)="deleteMaintenance(maint.id)" class="btn btn-danger btn-sm float-end">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="listMaintenances.length === 0" class="row mt-5">
+  <h5>No hay mantenimientos para mostrar</h5>
+</div>
